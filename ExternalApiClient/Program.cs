@@ -16,7 +16,7 @@ namespace ExternalApiClient
             var disco = await DiscoveryClient.GetAsync("http://localhost:5000");
 
             // request token
-            /*var tokenClient = new TokenClient(disco.TokenEndpoint, "ExternalApiClient", "secret");
+            var tokenClient = new TokenClient(disco.TokenEndpoint, "ExternalApiClient", "secret");
             var tokenResponse = await tokenClient.RequestClientCredentialsAsync("confArchApi");
 
             if (tokenResponse.IsError)
@@ -26,11 +26,11 @@ namespace ExternalApiClient
             }
 
             Console.WriteLine(tokenResponse.Json);
-            Console.WriteLine("\n\n");*/
+            Console.WriteLine("\n\n");
 
             // call api
             var client = new HttpClient();
-            //client.SetBearerToken(tokenResponse.AccessToken);
+            client.SetBearerToken(tokenResponse.AccessToken);
 
             GetTotalAttendeePosted(client).GetAwaiter().GetResult();
 
