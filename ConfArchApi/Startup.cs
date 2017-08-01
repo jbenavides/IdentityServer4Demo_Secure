@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using IdentityServer4;
 
 namespace ConfArchApi
 {
@@ -30,14 +31,14 @@ namespace ConfArchApi
                 app.UseDeveloperExceptionPage();
             }
 
-            /*app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
                 Authority = "http://localhost:5000",
                 ApiName = "confArchApi",
                 AllowedScopes = new[] { "confArchApi" },
 
                 RequireHttpsMetadata = false
-            });*/
+            });
 
             app.UseMvcWithDefaultRoute();
         }

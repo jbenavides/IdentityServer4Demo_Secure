@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
 using ConfArchShared.Models;
 using ConfArchWeb.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConfArchWeb.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ConferenceController: Controller
     {
         private readonly ConferenceApiService service;

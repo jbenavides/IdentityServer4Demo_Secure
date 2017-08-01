@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using ConfArchApi.Repositories;
 using ConfArchShared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConfArchApi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ConferenceController : Controller
     {
         private readonly ConferenceRepo repo;

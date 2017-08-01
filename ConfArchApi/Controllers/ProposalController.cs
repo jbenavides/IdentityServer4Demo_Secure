@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using ConfArchApi.Repositories;
 using ConfArchShared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConfArchApi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("[controller]")]
     public class ProposalController : Controller
     {

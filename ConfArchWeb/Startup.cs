@@ -27,27 +27,29 @@ namespace ConfArchWeb
             loggerFactory.AddConsole();
 
             app.UseDeveloperExceptionPage();
-            /*
+            
+            // cookie middleware first
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationScheme = "Cookies"
             });
 
+            //openId connect middleware
             app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
             {
                 AuthenticationScheme = "oidc",
-                SignInScheme = "Cookies",
+                SignInScheme = "Cookies", //where to store the identity information, this is reference to the cookie middleware
 
-                Authority = "http://localhost:5000",
-                RequireHttpsMetadata = false,
+                Authority = "http://localhost:5000", //URL base of the token service
+                RequireHttpsMetadata = false, //overrides the default requirement that only Https traffic from the token service is allowed. (just for dev)
 
                 ClientId = "confarchweb",
                 ClientSecret = "secret",
 
-                ResponseType = "code id_token",
-                Scope = { "confArchApi" },
-                SaveTokens = true       
-            });*/
+                ResponseType = "code id_token", //determines which grant is being used. in this case is a combination of authorization code and identity token.
+                Scope = { "confArchApi" },// a list of scopes we want this client to request.
+                SaveTokens = true // indicates we want to store the access token in a cookie.
+            });
 
             app.UseStaticFiles();
             app.UseMvc(routes =>
